@@ -16,7 +16,7 @@ public:
 		, comp_(comp)
 	{}
 
-	// ²ãĞò±éÀúÉ¾³ı½Úµã
+	// å±‚åºéå†åˆ é™¤èŠ‚ç‚¹
 	~BSTree() {
 		if (nullptr != root_) {
 			queue<Node*> q;
@@ -36,7 +36,7 @@ public:
 	}
 
 	void non_cur_insert(const T& val) {
-		// Ê÷Îª¿Õ£¬Éú³É¸ù½áµã
+		// æ ‘ä¸ºç©ºï¼Œç”Ÿæˆæ ¹ç»“ç‚¹
 		if (root_ == nullptr) {
 			root_ = new Node(val);
 			return;
@@ -45,7 +45,7 @@ public:
 		Node* parent = nullptr;
 		while (nullptr != cur) {
 			if (cur->data_ == val) {
-				// ²»²åÈëÒÑ´æÔÚµÄÔªËØ£¬½áÊø
+				// ä¸æ’å…¥å·²å­˜åœ¨çš„å…ƒç´ ï¼Œç»“æŸ
 				return;
 			}
 			else if (comp_(val, cur->data_)) {
@@ -85,12 +85,12 @@ public:
 				cur = cur->right_;
 			}
 		}
-		// Ã»ÕÒµ½val½Úµã
+		// æ²¡æ‰¾åˆ°valèŠ‚ç‚¹
 		if (cur == nullptr) {
 			return;
 		}
-		// ´ËÊ±curÖ¸Ïò´ıÉ¾³ı½Úµã
-		// ÈôÓĞÁ½¸öº¢×Ó£¬ÔòÑ°ÕÒÇ°Çı½Úµã£¬ÓÃÇ°Çı½ÚµãµÄÖµÌæ»»´ıÉ¾³ı½ÚµãµÄÖµ
+		// æ­¤æ—¶curæŒ‡å‘å¾…åˆ é™¤èŠ‚ç‚¹
+		// è‹¥æœ‰ä¸¤ä¸ªå­©å­ï¼Œåˆ™å¯»æ‰¾å‰é©±èŠ‚ç‚¹ï¼Œç”¨å‰é©±èŠ‚ç‚¹çš„å€¼æ›¿æ¢å¾…åˆ é™¤èŠ‚ç‚¹çš„å€¼
 		if (cur->left_ != nullptr && cur->right_ != nullptr) {
 			parent = cur;
 			Node* pre = cur->left_;
@@ -138,19 +138,19 @@ public:
 	}
 
 	void cur_pre_order() const {
-		cout << "µİ¹éÇ°Ğò±éÀú£º";
+		cout << "é€’å½’å‰åºéå†ï¼š";
 		cur_pre_order(root_);
 		cout << endl;
 	}
 
 	void cur_in_order() const {
-		cout << "µİ¹éÖĞĞò±éÀú£º";
+		cout << "é€’å½’ä¸­åºéå†ï¼š";
 		cur_in_order(root_);
 		cout << endl;
 	}
 
 	void cur_post_order() const {
-		cout << "µİ¹éºóĞò±éÀú£º";
+		cout << "é€’å½’ååºéå†ï¼š";
 		cur_post_order(root_);
 		cout << endl;
 	}
@@ -160,7 +160,7 @@ public:
 	}
 
 	void cur_level_order() const {
-		cout << "µİ¹é²ãĞò±éÀú£º";
+		cout << "é€’å½’å±‚åºéå†ï¼š";
 		int tree_high = high();
 		for (int i = 0; i < tree_high; i++) {
 			cur_level_order(root_, i);
@@ -180,9 +180,9 @@ public:
 		root_ = cur_del(root_, val);
 	}
 
-	// ÏÈĞò±éÀú£º¸ù×óÓÒ£¬ÏÈÈëÓÒº¢×Ó£¬ºóÈë×óº¢×Ó
+	// å…ˆåºéå†ï¼šæ ¹å·¦å³ï¼Œå…ˆå…¥å³å­©å­ï¼Œåå…¥å·¦å­©å­
 	void non_cur_pre_order() const {
-		cout << "·Çµİ¹éÇ°Ğò±éÀú£º";
+		cout << "éé€’å½’å‰åºéå†ï¼š";
 		stack<Node*> st;
 		if (nullptr == root_) {
 			return;
@@ -203,7 +203,7 @@ public:
 	}
 
 	void non_cur_in_order() const {
-		cout << "·Çµİ¹éÖĞĞò±éÀú£º";
+		cout << "éé€’å½’ä¸­åºéå†ï¼š";
 		if (nullptr == root_) {
 			return ;
 		}
@@ -224,7 +224,7 @@ public:
 	}
 
 	void non_cur_post_order() const {
-		cout << "·Çµİ¹éºóĞò±éÀú£º";
+		cout << "éé€’å½’ååºéå†ï¼š";
 		if (nullptr == root_) {
 			return;
 		}
@@ -253,7 +253,7 @@ public:
 	}
 
 	void non_cur_level_order() const {
-		cout << "·Çµİ¹é²ãĞò±éÀú£º";
+		cout << "éé€’å½’å±‚åºéå†ï¼š";
 		if (nullptr == root_) {
 			return;
 		}
@@ -277,7 +277,7 @@ public:
 		return get_tree_num(root_);
 	}
 
-	// ÕÒµ½Çø¼ä[low, high]ÄÚµÄÖµ´æÈëvec
+	// æ‰¾åˆ°åŒºé—´[low, high]å†…çš„å€¼å­˜å…¥vec
 	void find_values(vector<T>& vec, int low, int high) {
 		find_values(root_, vec, low, high);
 	}
@@ -304,7 +304,7 @@ public:
 			}
 		}
 		if (nullptr == cur) {
-			// Ã»ÕÒµ½×ÓÊ÷µÄ¸ù½áµã
+			// æ²¡æ‰¾åˆ°å­æ ‘çš„æ ¹ç»“ç‚¹
 			return false;
 		}
 		return is_child_tree(cur, tree.root_);
@@ -327,12 +327,13 @@ public:
 
 	bool is_balance() {
 		int level = 0;
-		bool flag = true; // ¼Ù¶¨µ±Ç°Ê÷ÎªÆ½ºâÊ÷
+		bool flag = true; // å‡å®šå½“å‰æ ‘ä¸ºå¹³è¡¡æ ‘
 		is_balance(root_, level, flag);
 		return flag;
 	}
+	
 
-	// ·µ»ØÖĞĞò±éÀúLVRµ¹ÊıµÚk¸ö½Úµã£¬Ò²¼´RVLÕıÊıµÚk¸ö½Úµã
+	// è¿”å›ä¸­åºéå†LVRå€’æ•°ç¬¬kä¸ªèŠ‚ç‚¹ï¼Œä¹Ÿå³RVLæ­£æ•°ç¬¬kä¸ªèŠ‚ç‚¹
 	T get_k_node(const int k) {
 		int cnt = 0;
 		Node* node = get_k_node(root_, cnt, k);
@@ -340,9 +341,9 @@ public:
 			return node->data_;
 		}
 		try {
-			string error = "²»´æÔÚÖĞĞò±éÀúµ¹ÊıµÚ";
+			string error = "ä¸å­˜åœ¨ä¸­åºéå†å€’æ•°ç¬¬";
 			error += to_string(k);
-			error += "¸ö½Úµã";
+			error += "ä¸ªèŠ‚ç‚¹";
 			throw error;
 		}
 		catch(string error){
@@ -352,8 +353,19 @@ public:
 		
 	}
 
+	T getLCA(const T& val1, const T& val2) {
+		if (nullptr == root_) {
+			throw "root nullptr";
+		}
+		Node* lca = getLCA(root_, val1, val2);
+		if (nullptr == lca) {
+			throw "no LCA";
+		}
+		return lca->data_;
+	}
+
 private:
-	// ÕâÊÇÀàĞÍ¶¨Òå£¬²»ÊÇÉú³É±äÁ¿
+	// è¿™æ˜¯ç±»å‹å®šä¹‰ï¼Œä¸æ˜¯ç”Ÿæˆå˜é‡
 	struct Node {
 		T data_;
 		Node* left_;
@@ -398,9 +410,9 @@ private:
 		return left > right ? left + 1 : right + 1;
 	}
 	
-	// ¿ÉÊä³öÒÔnodeÎª¸ù½ÚµãµÄµÚi²ãµÄ½Úµã
+	// å¯è¾“å‡ºä»¥nodeä¸ºæ ¹èŠ‚ç‚¹çš„ç¬¬iå±‚çš„èŠ‚ç‚¹
 	void cur_level_order(Node* node, int i) const {
-		// µ±Ê÷µÄÄ³¸ö·ÖÖ§±ÈÆäËûµÄ·ÖÖ§¶¼Òª³¤£¬¾Í¿ÉÄÜ³öÏÖÔÚÄ³¸öµÚi²ãi²»Îª0£¬nodeÎªnullptrµÄÇé¿ö
+		// å½“æ ‘çš„æŸä¸ªåˆ†æ”¯æ¯”å…¶ä»–çš„åˆ†æ”¯éƒ½è¦é•¿ï¼Œå°±å¯èƒ½å‡ºç°åœ¨æŸä¸ªç¬¬iå±‚iä¸ä¸º0ï¼Œnodeä¸ºnullptrçš„æƒ…å†µ
 		if (nullptr == node) {
 			return;
 		}
@@ -413,14 +425,14 @@ private:
 	}
 
 	
-	// ÔÚÒÔnodeÎª¸ù½áµãµÄÊ÷ÖĞ²åÈëval£¬²¢·µ»Ø²åÈë½ÚµãºóµÄÊ÷µÄ¸ù½áµã
+	// åœ¨ä»¥nodeä¸ºæ ¹ç»“ç‚¹çš„æ ‘ä¸­æ’å…¥valï¼Œå¹¶è¿”å›æ’å…¥èŠ‚ç‚¹åçš„æ ‘çš„æ ¹ç»“ç‚¹
 	Node* cur_insert(Node* node, const T& val) {
-		// ÕÒµ½ºÏÊÊµÄÎ»ÖÃ£¬Éú³ÉĞÂ½Úµã£¬²¢·µ»Ø½ÚµãµØÖ·
+		// æ‰¾åˆ°åˆé€‚çš„ä½ç½®ï¼Œç”Ÿæˆæ–°èŠ‚ç‚¹ï¼Œå¹¶è¿”å›èŠ‚ç‚¹åœ°å€
 		if (nullptr == node) {
 			return new Node(val);
 		}
 		if (val == node->data_) {
-			// ²»²åÈëÏàÍ¬Êı¾İ
+			// ä¸æ’å…¥ç›¸åŒæ•°æ®
 			return node;
 		}
 		else if (comp_(val, node->data_)) {
@@ -447,16 +459,16 @@ private:
 		}
 	}
 
-	// ÔÚÒÔnodeÎª¸ù½áµãµÄÊ÷ÖĞÑ°ÕÒÖµÎªvalµÄ½ÚµãÉ¾³ı
-	// É¾³ıÖ¸¶¨½Úµãºó£¬ĞèÒª°ÑÉ¾³ı½ÚµãµÄº¢×Ó½ÚµãµÄµØÖ··µ»Ø¸ø¶ÔÓ¦¸¸½Úµã
+	// åœ¨ä»¥nodeä¸ºæ ¹ç»“ç‚¹çš„æ ‘ä¸­å¯»æ‰¾å€¼ä¸ºvalçš„èŠ‚ç‚¹åˆ é™¤
+	// åˆ é™¤æŒ‡å®šèŠ‚ç‚¹åï¼Œéœ€è¦æŠŠåˆ é™¤èŠ‚ç‚¹çš„å­©å­èŠ‚ç‚¹çš„åœ°å€è¿”å›ç»™å¯¹åº”çˆ¶èŠ‚ç‚¹
 	Node* cur_del(Node* node, const T& val) {
 		if (nullptr == node) {
 			return nullptr;
 		}
 		if (node->data_ == val) {
-			// ÕÒµ½ºó£¬Çé¿ö3
+			// æ‰¾åˆ°åï¼Œæƒ…å†µ3
 			if (nullptr != node->left_ && nullptr != node->right_) {
-				// ÕÒÇ°Çı½Úµã£¬Ìæ»»µ±Ç°½ÚµãµÄÖµºó£¬É¾³ıÇ°Çı½Úµã
+				// æ‰¾å‰é©±èŠ‚ç‚¹ï¼Œæ›¿æ¢å½“å‰èŠ‚ç‚¹çš„å€¼åï¼Œåˆ é™¤å‰é©±èŠ‚ç‚¹
 				Node* parent = node;
 				Node* pre = node->left_;
 				while (nullptr != pre->right_) {
@@ -483,21 +495,21 @@ private:
 				delete pre;
 			}
 			else {
-				// Çé¿ö1¡¢2
+				// æƒ…å†µ1ã€2
 				if (nullptr != node->left_) {
-					// ×óº¢×Ó²»¿Õ£¬É¾³ıµ±Ç°½Úµãºó·µ»Ø×óº¢×ÓµÄµØÖ·
+					// å·¦å­©å­ä¸ç©ºï¼Œåˆ é™¤å½“å‰èŠ‚ç‚¹åè¿”å›å·¦å­©å­çš„åœ°å€
 					Node* left = node->left_;
 					delete node;
 					return left;
 				}
 				else if (nullptr != node->right_){
-					// ÓÒº¢×Ó²»¿Õ£¬É¾³ıµ±Ç°½Úµãºó·µ»ØÓÒº¢×ÓµÄµØÖ·
+					// å³å­©å­ä¸ç©ºï¼Œåˆ é™¤å½“å‰èŠ‚ç‚¹åè¿”å›å³å­©å­çš„åœ°å€
 					Node* right = node->right_;
 					delete node;
 					return right;
 				}
 				else {
-					// É¾³ıÒ¶×Ó½Úµã
+					// åˆ é™¤å¶å­èŠ‚ç‚¹
 					delete node;
 					return nullptr;
 				}
@@ -509,11 +521,11 @@ private:
 		else {
 			node->right_ = cur_del(node->right_, val);
 		}
-		// Ã¿´Îµ÷ÓÃº¯Êı£¬¶¼ÊÇ½øÈëÁËÒ»¸ö½Úµã£¬»ØËİµÄÊ±ºò½«µ±Ç°½ÚµãµÄµØÖ··µ»Ø¸ø¶ÔÓ¦¸¸½Úµã
+		// æ¯æ¬¡è°ƒç”¨å‡½æ•°ï¼Œéƒ½æ˜¯è¿›å…¥äº†ä¸€ä¸ªèŠ‚ç‚¹ï¼Œå›æº¯çš„æ—¶å€™å°†å½“å‰èŠ‚ç‚¹çš„åœ°å€è¿”å›ç»™å¯¹åº”çˆ¶èŠ‚ç‚¹
 		return node;
 	}
 
-	// ·µ»ØÒÔnodeÎª¸ù½áµãµÄÊ÷µÄ½ÚµãÊı
+	// è¿”å›ä»¥nodeä¸ºæ ¹ç»“ç‚¹çš„æ ‘çš„èŠ‚ç‚¹æ•°
 	int get_tree_num(Node* node) {
 		if (nullptr == node) {
 			return 0;
@@ -523,7 +535,7 @@ private:
 		return left + right + 1;
 	}
 
-	// ÕÒµ½ÒÔnodeÎª¸ù½áµãµÄÊ÷ÖĞ£¬Öµ½éÓÚ[low, high]Ö®¼äµÄÔªËØ
+	// æ‰¾åˆ°ä»¥nodeä¸ºæ ¹ç»“ç‚¹çš„æ ‘ä¸­ï¼Œå€¼ä»‹äº[low, high]ä¹‹é—´çš„å…ƒç´ 
 	void find_values(Node* node, vector<T>& vec, int low, int high) {
 		if (nullptr == node) {
 			return;
@@ -563,15 +575,15 @@ private:
 		if (nullptr == father && nullptr == child) {
 			return true;
 		}
-		// ¸¸Ç×Îª¿Õ£¬º¢×Ó²»¿Õ
+		// çˆ¶äº²ä¸ºç©ºï¼Œå­©å­ä¸ç©º
 		if (nullptr == father) {
 			return false;
 		}
-		// º¢×ÓÎª¿Õ£¬¸¸Ç×²»¿Õ
+		// å­©å­ä¸ºç©ºï¼Œçˆ¶äº²ä¸ç©º
 		if (nullptr == child) {
 			return true;
 		}
-		// º¢×Ó¸¸Ç×¶¼²»¿Õ
+		// å­©å­çˆ¶äº²éƒ½ä¸ç©º
 		if (father->data_ != child->data_) {
 			return false;
 		}
@@ -594,7 +606,7 @@ private:
 			return true;
 		}
 		if (nullptr != l && nullptr != r) {
-			// Á½¸ö½Úµã¶¼²»¿Õ
+			// ä¸¤ä¸ªèŠ‚ç‚¹éƒ½ä¸ç©º
 			if (l->data_ != r->data_) {
 				return false;
 			}
@@ -603,7 +615,7 @@ private:
 		return false;
 	}
 
-	// ÀûÓÃĞòÁĞpreÇø¼ä[i, j]ÔªËØºÍĞòÁĞinÇø¼ä[m, n]ÔªËØÖØ½¨¶ş²æÊ÷
+	// åˆ©ç”¨åºåˆ—preåŒºé—´[i, j]å…ƒç´ å’Œåºåˆ—inåŒºé—´[m, n]å…ƒç´ é‡å»ºäºŒå‰æ ‘
 	Node* cur_rebuild(int pre[], int i, int j, int in[], int m, int n) {
 		if (i > j || m > n) {
 			return nullptr;
@@ -611,13 +623,13 @@ private:
 		Node* node = new Node(pre[i]);
 		for (int k = m; k <= n; k++) {
 			if (pre[i] == in[k]) {
-				// ÔÚÖĞĞò±éÀúĞòÁĞÖĞÕÒµ½µ±Ç°µÄ½áµã
+				// åœ¨ä¸­åºéå†åºåˆ—ä¸­æ‰¾åˆ°å½“å‰çš„ç»“ç‚¹
 				node->left_ = cur_rebuild(pre, i + 1, i + ( k - m ), in, m, k - 1);
 				node->right_ = cur_rebuild(pre, i + (k - m) + 1, j, in, k + 1, n);
 				return node;
 			}
 		}
-		// ÈôÔÚÖĞĞò±éÀúĞòÁĞÖĞÕÒµ½µ±Ç°µÄ½áµã£¬ÔòËµÃ÷ÏÈĞòºÍÖĞĞò²»Æ¥Åä
+		// è‹¥åœ¨ä¸­åºéå†åºåˆ—ä¸­æ‰¾åˆ°å½“å‰çš„ç»“ç‚¹ï¼Œåˆ™è¯´æ˜å…ˆåºå’Œä¸­åºä¸åŒ¹é…
 		return nullptr;
 	}
 
@@ -628,8 +640,8 @@ private:
 
 		int left = is_balance(node->left_, level + 1, flag);
 		if (!flag) {
-			// Ö´ĞĞµ½ÕâÀï£¬·µ»ØÖµÊÇ¶àÉÙ²»ÖØÒª£¬·µ»ØÊÇÎªÁËÌáÇ°½áÊøº¯Êı£¬²»ÔÙ¼ÌĞøµİ¹é
-			// flagÒÑ¾­±»ÖµÎªfalse£¬¾Í¿ÉÒÔÅĞ¶¨µ±Ç°Ê÷²»Æ½ºâ
+			// æ‰§è¡Œåˆ°è¿™é‡Œï¼Œè¿”å›å€¼æ˜¯å¤šå°‘ä¸é‡è¦ï¼Œè¿”å›æ˜¯ä¸ºäº†æå‰ç»“æŸå‡½æ•°ï¼Œä¸å†ç»§ç»­é€’å½’
+			// flagå·²ç»è¢«å€¼ä¸ºfalseï¼Œå°±å¯ä»¥åˆ¤å®šå½“å‰æ ‘ä¸å¹³è¡¡
 			return -1;
 		}
 
@@ -638,15 +650,15 @@ private:
 			return -1;
 		}
 
-		// ÅĞ¶Ïµ±Ç°½ÚµãÊÇ·ñÊ§ºâ
+		// åˆ¤æ–­å½“å‰èŠ‚ç‚¹æ˜¯å¦å¤±è¡¡
 		if (abs(left - right) > 1) {
 			flag = false;
 		}
-		// ·µ»Ø×ÓÊ÷levelµÄ´óÖµ£¬Ò²¼´·µ»ØÁËµ±Ç°½ÚµãµÄ×ÓÊ÷ÖĞ×î´óµÄÉî¶È
+		// è¿”å›å­æ ‘levelçš„å¤§å€¼ï¼Œä¹Ÿå³è¿”å›äº†å½“å‰èŠ‚ç‚¹çš„å­æ ‘ä¸­æœ€å¤§çš„æ·±åº¦
 		return max(left, right);
 	}
 
-	// ·µ»ØÖĞĞò±éÀúLVRµ¹ÊıµÚk¸ö½Úµã£¬Ò²¼´RVLÕıÊıµÚk¸ö½Úµã
+	// è¿”å›ä¸­åºéå†LVRå€’æ•°ç¬¬kä¸ªèŠ‚ç‚¹ï¼Œä¹Ÿå³RVLæ­£æ•°ç¬¬kä¸ªèŠ‚ç‚¹
 	Node* get_k_node(Node* node, int& cnt, const int k) {
 		if (nullptr == node) {
 			return nullptr;
@@ -667,7 +679,20 @@ private:
 		return get_k_node(node->left_, cnt, k);
 	}
 
-	// Ö¸ÏòBSTÊ÷µÄ¸ù½áµã
+	Node* getLCA(Node* node, const T& val1, const T& val2) {
+		if (nullptr == node) {
+			return nullptr;
+		}
+		if (comp_(node->data_, val1) && comp_(node->data_, val2)) {
+			return getLCA(node->right_, val1, val2);
+		}else if(comp_(val1, node->data_) && comp_(val2, node->data_)){
+			return getLCA(node->left_, val1, val2);
+		}
+		else {
+			return node;
+		}
+	}
+	// æŒ‡å‘BSTæ ‘çš„æ ¹ç»“ç‚¹
 	Node* root_;
 	Comp comp_;
 };
@@ -713,7 +738,7 @@ void test1() {
 #endif
 
 void test() {
-	int pre[] = { 58, 24, 0, 5, 34, 41, 67, 62, 64,69,78 };
+	int pre[] = { 50,20,80,10,40,60,90 };
 	int in[] = { 0, 5, 24,34,41,58,62, 64,67,69,78 };
 	BSTree<int> tree;
 	tree.rebuild(pre, 0, 10, in, 0, 10);
@@ -722,20 +747,20 @@ void test() {
 }
 
 int main() {
-	using Element = pair<int, string>;
+	/*using Element = pair<int, string>;
 	using Functor = function<bool(Element, Element)>;
 
 	BSTree<Element, Functor> tree(
 		[](Element e1, Element e2)->bool {
 		return e1.first > e2.first;
-	});
+	});*/
 
-	/*int arr[] = { 57,24,67,0,34,62,69,5,41,64,78};
+	int arr[] = { 50,20,80,10,40,60,90 };
 	BSTree<int> tree;
 	for (int val : arr) {
 		tree.cur_insert(val);
-	}*/
-
+	}
+	cout << tree.getLCA(20, 90);
 	// cout<<tree.get_k_node(-1);
 	// tree.non_cur_level_order();
 	// cout << tree.isBST() << endl;
